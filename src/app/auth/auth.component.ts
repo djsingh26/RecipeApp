@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core'
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AuthService, AuthresponseData } from './auth.service';
+import { AuthService, AuthResponseData } from './auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -30,7 +30,7 @@ export class AuthComponent {
 
     this.isLoading = true;
 
-    let authObs: Observable<AuthresponseData>;
+    let authObs: Observable<AuthResponseData>;
 
     if(this.isLoginMode) {
       authObs = this.authService.login(email, password);
@@ -87,6 +87,10 @@ export class AuthComponent {
 
 
     form.reset();
+  }
+
+  onHandleError() {
+    this.error = null;
   }
 
 

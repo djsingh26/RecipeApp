@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
     RecipeEditComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    AlertComponent
+    AlertComponent,
+    PlaceholderDirective
+
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
+
   ],
   providers: [
     ShoppingListService,

@@ -1,3 +1,6 @@
+import { ViewContainerRef } from '@angular/core';
+import { PlaceholderDirective } from './../shared/placeholder/placeholder.directive';
+import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { AlertComponent } from './../shared/alert/alert.component';
 import { Router } from '@angular/router';
 
@@ -14,7 +17,7 @@ export class AuthComponent {
   isLoginMode: boolean = true;
   isLoading = false;
   error: string = null;
-  @ViewChild()
+  @ViewChild(PlaceholderDirective, {static: false}) alertHost: PlaceholderDirective
 
   constructor(private authService: AuthService
             , private router: Router,
@@ -105,9 +108,10 @@ export class AuthComponent {
     const alertCmpFactory =  this.componentFactoryResolver.resolveComponentFactory(
       AlertComponent
       );
+    const hostViewContainerRef = this.alertHost.viewContainerRef;
+    hostViewContainerRef.clear();
 
-
-
+    hostViewContainerRef.createComponent(alertCmpFactory)
   }
 
 
